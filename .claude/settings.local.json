@@ -1,0 +1,30 @@
+{
+  "env": {
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1"
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:na.finalfantasyxiv.com)",
+      "WebFetch(domain:www.color-hex.com)",
+      "WebFetch(domain:ffxiv.gamerescape.com)",
+      "Bash(npm run *)",
+      "Bash(cd \"C:\\\\Users\\\\Kai\\\\Documents\\\\GitHub\\\\CrystalSetup\" && rm -rf src/content/docs/hardware src/content/docs/graphics src/content/docs/software src/content/docs/guides src/content/docs/index.mdx && ls src/content/docs/)",
+      "Bash(powershell -Command \"\\(Get-Item reference.pdf\\).Length\")",
+      "Bash(where pdftoppm *)",
+      "Bash(where pdftotext *)",
+      "Bash(pdftotext -layout reference.pdf reference.txt)",
+      "Bash(netstat -ano)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Read(//c/Users/Kai/.claude/projects/c--Users-Kai-Documents-GitHub-CrystalSetup/4c19c693-5cac-423a-8410-46a2a08d5fac/tool-results/**)",
+      "Bash(rm -rf /tmp/design-fetch)",
+      "Bash(mkdir -p /tmp/design-fetch)",
+      "Bash(tar -xzf /c/Users/Kai/.claude/projects/c--Users-Kai-Documents-GitHub-CrystalSetup/4c19c693-5cac-423a-8410-46a2a08d5fac/tool-results/webfetch-1778267501431-rdnvk3.bin -C /tmp/design-fetch)",
+      "Read(//tmp/**)",
+      "Bash(cygpath -w /tmp/design-fetch)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Kai\\Documents\\GitHub\\CrystalSetup\\src\\content\\docs\\hardware"
+    ]
+  }
+}

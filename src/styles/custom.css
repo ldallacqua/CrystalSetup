@@ -1,146 +1,488 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans:wght@400;700&family=Roboto+Condensed:wght@700&display=swap');
+/* ============================================================
+   CrystalSetup — FFXIV-inspired Starlight theme
+   Palette: Lodestone navy · Lodestone gold (#bfa34c) ·
+            Crystal-of-Light cyan (#4c7ee8) · role accents
+   ============================================================ */
 
-:root {
-  /* FFXIV Dark Theme Colors */
-  --sl-color-accent-low: #3a2e1d;
-  --sl-color-accent: #d4c391; /* Lodestone Gold */
-  --sl-color-accent-high: #e2d1a1;
-  
-  --sl-color-white: #ffffff;
-  --sl-color-gray-1: #e6e1d6; /* Parchment text */
-  --sl-color-gray-2: #c5bbaa;
-  --sl-color-gray-3: #8a8a8a;
-  --sl-color-gray-4: #4a4a4a;
-  --sl-color-gray-5: #333333;
-  --sl-color-gray-6: #2b2b2b; /* FFXIV Dark Grey */
-  --sl-color-black: #121212;
-  --sl-color-bg: #212121; /* Main BG */
-  --sl-color-bg-nav: #1a1a1a;
-  --sl-color-bg-sidebar: #242424;
-  
-  --sl-font: 'Noto Sans', sans-serif;
-  --sl-font-mono: 'Roboto Condensed', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
 
+/* ---------- Tokens · dark (forced — light mode is disabled) ---------- */
+:root,
 :root[data-theme='light'] {
-  /* FFXIV Light (Parchment) Theme */
-  --sl-color-accent-low: #e2d1a1;
-  --sl-color-accent: #8b6b22;
-  --sl-color-accent-high: #3d2b01;
-  
-  --sl-color-white: #121212;
-  --sl-color-gray-1: #2b2b2b;
-  --sl-color-gray-2: #4a4a4a;
-  --sl-color-gray-3: #8a8a8a;
-  --sl-color-gray-4: #c5bbaa;
-  --sl-color-gray-5: #e6e1d6;
-  --sl-color-gray-6: #f4f1ea; /* Parchment */
-  --sl-color-black: #ffffff;
-  --sl-color-bg: #f4f1ea;
-  --sl-color-bg-nav: #e6e1d6;
-  --sl-color-bg-sidebar: #eae5db;
+	/* Lodestone-derived navies */
+	--crystal-bg: #11141c;
+	--crystal-bg-elevated: #171b25;
+	--crystal-bg-sidebar: #14171f;
+	--crystal-bg-nav: #0d1017;
+	--crystal-border: #2a2f3e;
+	--crystal-border-strong: #3b4255;
+
+	/* Accents */
+	--crystal-gold: #bfa34c;
+	--crystal-gold-bright: #e3cb7a;
+	--crystal-gold-deep: #6f5d2a;
+	--crystal-cyan: #4c7ee8;
+	--crystal-cyan-bright: #82a9ff;
+	--crystal-cyan-glow: rgba(76, 126, 232, 0.35);
+	--crystal-gold-glow: rgba(191, 163, 76, 0.2);
+
+	/* Role colors (Tank / Healer / DPS) */
+	--role-tank: #2d3a80;
+	--role-healer: #346624;
+	--role-dps: #732828;
+
+	/* Starlight overrides */
+	--sl-color-accent-low: #2a2410;
+	--sl-color-accent: var(--crystal-gold);
+	--sl-color-accent-high: var(--crystal-gold-bright);
+
+	--sl-color-white: #f1ecdf;
+	--sl-color-gray-1: #e3dccb;
+	--sl-color-gray-2: #b8b1a0;
+	--sl-color-gray-3: #807a6c;
+	--sl-color-gray-4: #4a4a55;
+	--sl-color-gray-5: #2a2e3a;
+	--sl-color-gray-6: #1a1e28;
+	--sl-color-black: #0a0c12;
+
+	--sl-color-bg: var(--crystal-bg);
+	--sl-color-bg-nav: var(--crystal-bg-nav);
+	--sl-color-bg-sidebar: var(--crystal-bg-sidebar);
+	--sl-color-bg-inline-code: rgba(76, 126, 232, 0.12);
+
+	--sl-color-text-accent: var(--crystal-gold-bright);
+
+	--sl-font: 'Noto Sans', system-ui, -apple-system, sans-serif;
+	--sl-font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
 }
 
-/* FFXIV Typography */
-h1, h2, h3, h4, h5, h6,
+/* Force dark UA color-scheme (scrollbars, form controls) regardless of saved preference */
+:root {
+	color-scheme: dark;
+}
+
+/* Hide the theme toggle entirely — light mode is disabled */
+starlight-theme-select,
+.theme-toggle {
+	display: none !important;
+}
+
+/* ---------- Global ---------- */
+body {
+	font-family: var(--sl-font);
+	font-feature-settings: 'kern', 'liga';
+	background:
+		radial-gradient(circle at 12% -10%, var(--crystal-cyan-glow) 0%, transparent 45%),
+		radial-gradient(circle at 105% 110%, var(--crystal-gold-glow) 0%, transparent 50%),
+		var(--sl-color-bg);
+	background-attachment: fixed;
+}
+
+::selection {
+	background: var(--crystal-gold);
+	color: var(--crystal-bg);
+}
+
+/* ---------- Headings ---------- */
 .sl-markdown-content h1,
 .sl-markdown-content h2,
 .sl-markdown-content h3,
 .sl-markdown-content h4,
 .sl-markdown-content h5,
-.sl-markdown-content h6,
-.site-title {
-  font-family: 'Cinzel', serif !important;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: capitalize;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+.sl-markdown-content h6 {
+	font-family: 'Cinzel', 'Trajan Pro', serif;
+	font-weight: 600;
+	letter-spacing: 0.04em;
 }
 
-.site-title {
-  color: var(--sl-color-accent-high) !important;
-  font-size: 1.5rem;
+.sl-markdown-content h1 {
+	font-size: 2.25rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	background: linear-gradient(180deg,
+		var(--crystal-gold-bright) 0%,
+		var(--crystal-gold) 65%,
+		var(--crystal-gold-deep) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	margin-bottom: 1.25rem;
 }
 
-/* FFXIV Inspired Headers with Gold Underlines */
-.sl-markdown-content h2,
+.sl-markdown-content h2 {
+	font-size: 1.5rem;
+	margin-top: 2.75rem;
+	color: var(--crystal-gold-bright);
+	border-bottom: none;
+}
+
 .sl-markdown-content h3 {
-  color: var(--sl-color-accent-high);
-  border-bottom: 2px solid;
-  border-image: linear-gradient(to right, var(--sl-color-accent), transparent) 1;
-  padding-bottom: 0.3rem;
-  margin-top: 2rem;
+	font-size: 1.2rem;
+	color: var(--crystal-gold-bright);
+	letter-spacing: 0.05em;
+	margin-top: 2rem;
 }
 
-/* Sidebar Styling */
+.sl-markdown-content h3::before {
+	content: '◆';
+	color: var(--crystal-gold);
+	font-size: 0.65em;
+	margin-right: 0.6em;
+	vertical-align: 0.15em;
+	text-shadow: 0 0 10px var(--crystal-gold-glow);
+}
+
+.sl-markdown-content h4 {
+	color: var(--sl-color-white);
+	font-size: 1.05rem;
+}
+
+/* ---------- Site title / brand ---------- */
+.site-title,
+a.site-title {
+	font-family: 'Cinzel', serif !important;
+	font-weight: 700 !important;
+	font-size: 1.35rem !important;
+	letter-spacing: 0.08em;
+	color: var(--crystal-gold-bright) !important;
+	gap: 0.6rem;
+}
+
+/* Logo mark beside the title */
+.site-title img {
+	height: 1.6em;
+	width: auto;
+	filter: drop-shadow(0 0 6px var(--crystal-gold-glow));
+}
+
+/* Header bar — target the outer <header> only, not the inner div.header */
+header.header {
+	border-bottom: none !important;
+	background: linear-gradient(180deg,
+		var(--crystal-bg-nav) 0%,
+		var(--crystal-bg-elevated) 100%) !important;
+	backdrop-filter: blur(8px);
+}
+
+header.header > .header {
+	background: transparent !important;
+}
+
+/* ---------- Sidebar ---------- */
 .sidebar-pane {
-  background-color: var(--sl-color-bg-sidebar);
-  border-right: 1px solid var(--sl-color-gray-5);
-  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+	background: var(--sl-color-bg-sidebar);
+	border-right: 1px solid var(--crystal-border);
 }
 
-.sidebar-content ul li a {
-  font-family: 'Noto Sans', sans-serif;
-  transition: all 0.2s ease;
-  border-left: 2px solid transparent;
+/* Group labels (top-level sidebar headings) */
+.sidebar-content .large,
+.sidebar-content summary > span,
+.sidebar-content details > summary span.large {
+	font-family: 'Cinzel', serif !important;
+	font-size: 0.78rem !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--crystal-gold) !important;
 }
 
-.sidebar-content ul li a[aria-current='page'] {
-  color: var(--sl-color-accent-high) !important;
-  background-color: rgba(212, 195, 145, 0.1);
-  border-left: 2px solid var(--sl-color-accent);
+.sidebar-content a {
+	border-left: 2px solid transparent;
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+	font-size: 0.9rem;
 }
 
-.sidebar-content ul li a:hover {
-  color: var(--sl-color-accent) !important;
-  background-color: rgba(212, 195, 145, 0.05);
+.sidebar-content a:hover {
+	color: var(--crystal-gold-bright) !important;
+	background: rgba(191, 163, 76, 0.05);
+	border-left-color: var(--crystal-gold-deep);
 }
 
-/* FFXIV UI Card Styling */
-.card, .sl-link-card {
-  background: linear-gradient(135deg, var(--sl-color-gray-6) 0%, var(--sl-color-gray-5) 100%) !important;
-  border: 1px solid var(--sl-color-gray-4) !important;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+.sidebar-content a[aria-current='page'] {
+	color: var(--crystal-gold-bright) !important;
+	background: linear-gradient(90deg, rgba(191, 163, 76, 0.14), transparent 80%);
+	border-left-color: var(--crystal-gold) !important;
+	font-weight: 600;
 }
 
-.card:hover, .sl-link-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 10px rgba(212, 195, 145, 0.2);
-  border-color: var(--sl-color-accent) !important;
+/* ---------- In-content links ---------- */
+.sl-markdown-content a:not(.sl-link-card):not([data-variant]) {
+	color: var(--crystal-cyan-bright);
+	text-decoration: none;
+	border-bottom: none;
+	transition: color 0.2s ease;
+}
+
+.sl-markdown-content a:not(.sl-link-card):not([data-variant]):hover,
+.sl-markdown-content a:not(.sl-link-card):not([data-variant]):focus,
+.sl-markdown-content a:not(.sl-link-card):not([data-variant]):active {
+	color: var(--crystal-gold-bright);
+	text-decoration: none;
+	border-bottom: none;
+}
+
+/* ---------- Cards ---------- */
+.card {
+	background: linear-gradient(135deg,
+		var(--crystal-bg-elevated) 0%,
+		var(--crystal-bg) 100%) !important;
+	border: 1px solid var(--crystal-border) !important;
+	border-radius: 6px;
+	padding: 1.25rem !important;
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Top gold gleam — Lodestone card signature */
+.card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(to right,
+		transparent 0%,
+		var(--crystal-gold) 50%,
+		transparent 100%);
+	opacity: 0.7;
+}
+
+.card:hover {
+	transform: translateY(-3px);
+	border-color: var(--crystal-gold) !important;
+	box-shadow:
+		0 8px 24px rgba(0, 0, 0, 0.45),
+		0 0 28px var(--crystal-gold-glow);
 }
 
 .card .title {
-  font-family: 'Roboto Condensed', sans-serif !important;
-  color: var(--sl-color-accent-high) !important;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+	font-family: 'Cinzel', serif !important;
+	color: var(--crystal-gold-bright) !important;
+	font-size: 1.05rem !important;
+	letter-spacing: 0.05em;
+	font-weight: 600 !important;
+	text-transform: none;
 }
 
-/* Buttons / Links */
-a {
-  color: var(--sl-color-accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
+.card .icon {
+	color: var(--crystal-cyan-bright) !important;
+	filter: drop-shadow(0 0 6px var(--crystal-cyan-glow));
 }
 
-a:hover {
-  color: var(--sl-color-accent-high);
-  text-decoration: underline;
+/* ---------- Link cards ---------- */
+.sl-link-card {
+	background: linear-gradient(135deg,
+		var(--crystal-bg-elevated),
+		var(--crystal-bg)) !important;
+	border: 1px solid var(--crystal-border) !important;
+	border-radius: 6px;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	position: relative;
 }
 
-/* Code Blocks */
+.sl-link-card:hover {
+	border-color: var(--crystal-gold) !important;
+	box-shadow: 0 0 22px var(--crystal-gold-glow);
+	transform: translateY(-2px);
+}
+
+.sl-link-card .title {
+	color: var(--crystal-gold-bright) !important;
+	font-family: 'Cinzel', serif;
+	letter-spacing: 0.04em;
+}
+
+/* ---------- Hero ---------- */
+.hero h1 {
+	font-family: 'Cinzel', serif !important;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	background: linear-gradient(180deg,
+		#f5e9c2 0%,
+		var(--crystal-gold) 60%,
+		var(--crystal-gold-deep) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.hero .tagline {
+	font-family: 'Cinzel', serif !important;
+	color: var(--crystal-cyan-bright) !important;
+	font-size: clamp(1rem, 2vw, 1.3rem) !important;
+	letter-spacing: 0.04em;
+	font-weight: 500;
+	font-style: italic;
+	text-shadow: 0 0 18px var(--crystal-cyan-glow);
+}
+
+.hero .actions a {
+	border-radius: 4px;
+	font-family: 'Cinzel', serif;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 0.7rem 1.5rem;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.hero .actions a[data-variant='primary'] {
+	background: linear-gradient(180deg,
+		var(--crystal-gold-bright) 0%,
+		var(--crystal-gold) 50%,
+		var(--crystal-gold-deep) 100%);
+	color: var(--crystal-bg) !important;
+	border: 1px solid var(--crystal-gold-bright);
+	box-shadow:
+		0 4px 14px rgba(191, 163, 76, 0.25),
+		inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.hero .actions a[data-variant='primary']:hover {
+	transform: translateY(-2px);
+	box-shadow:
+		0 6px 22px rgba(191, 163, 76, 0.45),
+		inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.hero .actions a[data-variant='minimal'] {
+	border: 1px solid var(--crystal-border-strong);
+	color: var(--crystal-gold-bright) !important;
+}
+
+.hero .actions a[data-variant='minimal']:hover {
+	border-color: var(--crystal-gold);
+	background: rgba(191, 163, 76, 0.08);
+}
+
+.hero img {
+	filter: drop-shadow(0 0 50px var(--crystal-cyan-glow));
+}
+
+/* ---------- Code ---------- */
 .expressive-code {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--sl-color-gray-5);
-  border-radius: 4px;
+	border-radius: 6px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+	border: 1px solid var(--crystal-border);
 }
 
-/* Custom Hero (if any) */
-.hero-tagline {
-  font-family: 'Cinzel', serif !important;
-  color: var(--sl-color-accent-high) !important;
-  font-size: 1.5rem !important;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+.sl-markdown-content :not(pre) > code {
+	background: rgba(76, 126, 232, 0.1) !important;
+	border: 1px solid rgba(76, 126, 232, 0.2);
+	border-radius: 3px;
+	padding: 0.1em 0.4em !important;
+	color: var(--crystal-cyan-bright) !important;
+	font-family: var(--sl-font-mono);
+	font-size: 0.88em;
 }
+
+/* ---------- Lists, tables, blockquotes ---------- */
+.sl-markdown-content blockquote {
+	border-left: 3px solid var(--crystal-gold);
+	background: linear-gradient(90deg, rgba(191, 163, 76, 0.06), transparent 80%);
+	padding: 0.85rem 1.1rem;
+	font-style: italic;
+	color: var(--sl-color-gray-1);
+	border-radius: 0 4px 4px 0;
+}
+
+.sl-markdown-content ul li::marker {
+	color: var(--crystal-gold);
+}
+
+.sl-markdown-content table {
+	border: 1px solid var(--crystal-border);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.sl-markdown-content table th {
+	background: var(--crystal-bg-nav);
+	color: var(--crystal-gold-bright);
+	font-family: 'Cinzel', serif;
+	letter-spacing: 0.05em;
+	font-weight: 600;
+}
+
+.sl-markdown-content table tr:nth-child(even) {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- Pagination ---------- */
+.pagination-links a {
+	border: 1px solid var(--crystal-border) !important;
+	border-radius: 6px;
+	background: var(--crystal-bg-elevated);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagination-links a:hover {
+	border-color: var(--crystal-gold) !important;
+	box-shadow: 0 0 14px var(--crystal-gold-glow);
+}
+
+/* ---------- Scrollbar ---------- */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--crystal-border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--crystal-bg-nav);
+}
+
+*::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, var(--crystal-border-strong), var(--crystal-border));
+	border-radius: 5px;
+	border: 2px solid var(--crystal-bg-nav);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, var(--crystal-gold), var(--crystal-gold-deep));
+}
+
+/* ---------- Decorative utilities (for use in MDX) ---------- */
+.crystal-divider {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 3rem 0;
+	color: var(--crystal-gold);
+}
+
+.crystal-divider::before,
+.crystal-divider::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(to right, transparent, var(--crystal-gold), transparent);
+}
+
+.crystal-divider .gem {
+	font-size: 1.1rem;
+	letter-spacing: 0.4em;
+	text-shadow: 0 0 12px var(--crystal-gold-glow);
+}
+
+/* Eyebrow / overline */
+.eyebrow {
+	display: inline-block;
+	font-family: 'Cinzel', serif;
+	font-size: 0.75rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--crystal-cyan-bright);
+	margin-bottom: 0.5rem;
+}
+
+/* Role-tinted card variants — apply class on a wrapping div */
+.role-tank > .card { border-top: 2px solid var(--role-tank) !important; }
+.role-healer > .card { border-top: 2px solid var(--role-healer) !important; }
+.role-dps > .card { border-top: 2px solid var(--role-dps) !important; }

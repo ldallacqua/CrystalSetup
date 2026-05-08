@@ -1,36 +1,123 @@
 ---
 title: CrystalSetup
-description: Your ultimate guide to FFXIV technical optimization and setup.
+description: Fix FFXIV's broken DLSS, restore frame pacing, and configure NVIDIA RTX rendering for a clean, sharp Eorzea. A complete graphics codex covering DLSSTweaks, DLSS Swapper, SpecialK, NVIDIA sharpening, GShade, Lossless Scaling, and XIVLauncher.
 template: splash
+head:
+  - tag: meta
+    attrs:
+      name: keywords
+      content: >
+        FFXIV DLSS fix, FFXIV blurry graphics, FFXIV frame pacing fix,
+        FFXIV stuttering fix, FFXIV dynamic resolution scaling problem,
+        FFXIV DRS broken, FFXIV pixelated upscaling, FFXIV Dawntrail DLSS,
+        DLSSTweaks FFXIV, DLSS Swapper FFXIV, SpecialK FFXIV,
+        FFXIV DLSS vs FSR, FFXIV better performance RTX,
+        FFXIV G-Sync VRR fix, FFXIV borderless windowed stutter,
+        FFXIV internal resolution fix, FFXIV graphics optimization,
+        Final Fantasy XIV DLSS setup guide, FFXIV RTX settings,
+        FFXIV GPose screenshot quality, FFXIV GPose blurry fix,
+        FFXIV Group Pose sharp screenshots, FFXIV photo mode quality,
+        FFXIV screenshot setup guide, FFXIV GPose DLSS,
+        FFXIV better screenshots 4K, FFXIV GPose tips RTX,
+        FFXIV Lossless Scaling frame generation, FFXIV XIVLauncher DPI fix
 hero:
-  tagline: Forge your legend with the perfect technical foundation. Documentation for high-performance Eorzean adventuring.
+  tagline: Forge your legend with the perfect technical foundation. A codex for high-performance Eorzean adventuring.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/icon.svg
   actions:
     - text: Begin Setup
-      link: /guides/setup-steps/
+      link: /CrystalSetup/setup-order/
       icon: right-arrow
-    - text: View Hardware
-      link: /hardware/computer-configs/
-      icon: setting
+      variant: primary
+    - text: Read The Problem
+      link: /CrystalSetup/the-problem/
+      icon: information
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Optimization Categories
+<div class="crystal-divider"><span class="gem">◆ ◆ ◆</span></div>
+
+<p class="eyebrow">The Codex</p>
+
+## Where to Start
 
 <CardGrid stagger>
-	<Card title="Hardware Tuning" icon="setting">
-		Detailed breakdowns of computer configurations and hardware requirements for peak performance.
+	<Card title="The Problem" icon="information">
+		Why FFXIV's DLSS is broken out of the box, the Dawntrail context, and what specifically goes wrong without third-party fixes.
 	</Card>
-	<Card title="Visual Fidelity" icon="pencil">
-		NVIDIA Control Panel, DLSS 3.5+, and GShade configurations to make Eorzea look its best.
+	<Card title="Setup Order" icon="rocket">
+		The exact install sequence — disable conflicting overlays, place DLLs in the right order, and configure each tool before first launch.
 	</Card>
-	<Card title="Software & Mods" icon="add-document">
-		Dalamud plugin recommendations and configuration steps for an enhanced UI experience.
+	<Card title="Tools" icon="setting">
+		Per-tool walkthroughs for SpecialK, DLSS Swapper, DLSSTweaks, NVIDIA sharpening, GShade, and Lossless Scaling.
 	</Card>
-	<Card title="Step-by-Step Guides" icon="open-book">
-		Chronological instructions on how to replicate this specific setup from scratch.
+	<Card title="Reference & Mods" icon="open-book">
+		Resolution scaling values, the troubleshooting recipes, the post-patch recovery checklist, and the XIVLauncher DPI fix.
 	</Card>
+</CardGrid>
+
+<div class="crystal-divider"><span class="gem">◆ ◆ ◆</span></div>
+
+<p class="eyebrow">Direct to a Page</p>
+
+## Quick Links
+
+<CardGrid>
+	<LinkCard
+		title="Setup Order"
+		description="Start here — the chronological install walkthrough."
+		href="/CrystalSetup/setup-order/"
+	/>
+	<LinkCard
+		title="The Problem"
+		description="Why DLSS is broken in FFXIV and what the fixes are actually doing."
+		href="/CrystalSetup/the-problem/"
+	/>
+	<LinkCard
+		title="XIVLauncher"
+		description="DPI-aware launcher; required on high-DPI displays for this guide to actually pay off."
+		href="/CrystalSetup/mods/xivlauncher/"
+	/>
+	<LinkCard
+		title="DLSSTweaks"
+		description="The core fix — locks the DLSS internal resolution and overrides FFXIV's broken DRS."
+		href="/CrystalSetup/tools/dlss-tweaks/"
+	/>
+	<LinkCard
+		title="SpecialK"
+		description="Flip Model override for VRR, frame rate cap, and the resolution OSD."
+		href="/CrystalSetup/tools/special-k/"
+	/>
+	<LinkCard
+		title="DLSS Swapper"
+		description="Update FFXIV's outdated nvngx_dlss.dll to the latest NVIDIA release."
+		href="/CrystalSetup/tools/dlss-swapper/"
+	/>
+	<LinkCard
+		title="NVIDIA Sharpening"
+		description="Driver-level post-process sharpening to recover crispness lost to DLSS smoothing."
+		href="/CrystalSetup/tools/nvidia-sharpening/"
+	/>
+	<LinkCard
+		title="GShade / ReShade"
+		description="Optional post-process visuals — color grading, AO, depth effects."
+		href="/CrystalSetup/tools/gshade/"
+	/>
+	<LinkCard
+		title="Lossless Scaling"
+		description="Optional frame generation — lock at 60 FPS and multiply to 120/180/240 Hz."
+		href="/CrystalSetup/tools/lossless-scaling/"
+	/>
+	<LinkCard
+		title="Resolution Scaling"
+		description="Recommended DLSSTweaks scale values for 4K, 1440p, and 1080p."
+		href="/CrystalSetup/reference/resolution-scaling/"
+	/>
+	<LinkCard
+		title="Troubleshooting"
+		description="The FSR toggle fix, post-patch recovery, and the high-DPI blurriness diagnosis."
+		href="/CrystalSetup/reference/troubleshooting/"
+	/>
 </CardGrid>

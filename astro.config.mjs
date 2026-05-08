@@ -9,33 +9,43 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'CrystalSetup',
+			logo: {
+				src: './src/assets/icon.svg',
+			},
 			customCss: ['./src/styles/custom.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{
-					label: 'Hardware',
+					label: 'Start Here',
 					items: [
-						{ label: 'Computer Configs', slug: 'hardware/computer-configs' },
+						{ label: 'Overview', link: '/' },
+						{ slug: 'the-problem' },
+						{ slug: 'setup-order' },
 					],
 				},
 				{
-					label: 'Graphics & Tuning',
+					label: 'Tools',
 					items: [
-						{ label: 'NVIDIA Settings', slug: 'graphics/nvidia-settings' },
-						{ label: 'DLSS Configs', slug: 'graphics/dlss-configs' },
-						{ label: 'GShade Setup', slug: 'graphics/gshade' },
+						{ slug: 'tools/special-k' },
+						{ slug: 'tools/dlss-swapper' },
+						{ slug: 'tools/dlss-tweaks' },
+						{ slug: 'tools/nvidia-sharpening' },
+						{ slug: 'tools/gshade' },
+						{ slug: 'tools/lossless-scaling' },
 					],
 				},
 				{
-					label: 'Software & Mods',
+					label: 'Reference',
 					items: [
-						{ label: 'Dalamud Plugins', slug: 'software/dalamud-plugins' },
+						{ slug: 'reference/resolution-scaling' },
+						{ slug: 'reference/troubleshooting' },
 					],
 				},
 				{
-					label: 'Guides',
+					label: 'Mods & Plugins',
 					items: [
-						{ label: 'Setup Steps', slug: 'guides/setup-steps' },
+						{ slug: 'mods' },
+						{ slug: 'mods/xivlauncher' },
 					],
 				},
 			],
