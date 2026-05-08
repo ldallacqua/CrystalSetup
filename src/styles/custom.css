@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans:wght@400;700&family=Roboto+Condensed:wght@700&display=swap');
+
+:root {
+  /* FFXIV Dark Theme Colors */
+  --sl-color-accent-low: #3a2e1d;
+  --sl-color-accent: #d4c391; /* Lodestone Gold */
+  --sl-color-accent-high: #e2d1a1;
+  
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e6e1d6; /* Parchment text */
+  --sl-color-gray-2: #c5bbaa;
+  --sl-color-gray-3: #8a8a8a;
+  --sl-color-gray-4: #4a4a4a;
+  --sl-color-gray-5: #333333;
+  --sl-color-gray-6: #2b2b2b; /* FFXIV Dark Grey */
+  --sl-color-black: #121212;
+  --sl-color-bg: #212121; /* Main BG */
+  --sl-color-bg-nav: #1a1a1a;
+  --sl-color-bg-sidebar: #242424;
+  
+  --sl-font: 'Noto Sans', sans-serif;
+  --sl-font-mono: 'Roboto Condensed', sans-serif;
+}
+
+:root[data-theme='light'] {
+  /* FFXIV Light (Parchment) Theme */
+  --sl-color-accent-low: #e2d1a1;
+  --sl-color-accent: #8b6b22;
+  --sl-color-accent-high: #3d2b01;
+  
+  --sl-color-white: #121212;
+  --sl-color-gray-1: #2b2b2b;
+  --sl-color-gray-2: #4a4a4a;
+  --sl-color-gray-3: #8a8a8a;
+  --sl-color-gray-4: #c5bbaa;
+  --sl-color-gray-5: #e6e1d6;
+  --sl-color-gray-6: #f4f1ea; /* Parchment */
+  --sl-color-black: #ffffff;
+  --sl-color-bg: #f4f1ea;
+  --sl-color-bg-nav: #e6e1d6;
+  --sl-color-bg-sidebar: #eae5db;
+}
+
+/* FFXIV Typography */
+h1, h2, h3, h4, h5, h6,
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.sl-markdown-content h5,
+.sl-markdown-content h6,
+.site-title {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.site-title {
+  color: var(--sl-color-accent-high) !important;
+  font-size: 1.5rem;
+}
+
+/* FFXIV Inspired Headers with Gold Underlines */
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  color: var(--sl-color-accent-high);
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, var(--sl-color-accent), transparent) 1;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+/* Sidebar Styling */
+.sidebar-pane {
+  background-color: var(--sl-color-bg-sidebar);
+  border-right: 1px solid var(--sl-color-gray-5);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.sidebar-content ul li a {
+  font-family: 'Noto Sans', sans-serif;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-content ul li a[aria-current='page'] {
+  color: var(--sl-color-accent-high) !important;
+  background-color: rgba(212, 195, 145, 0.1);
+  border-left: 2px solid var(--sl-color-accent);
+}
+
+.sidebar-content ul li a:hover {
+  color: var(--sl-color-accent) !important;
+  background-color: rgba(212, 195, 145, 0.05);
+}
+
+/* FFXIV UI Card Styling */
+.card, .sl-link-card {
+  background: linear-gradient(135deg, var(--sl-color-gray-6) 0%, var(--sl-color-gray-5) 100%) !important;
+  border: 1px solid var(--sl-color-gray-4) !important;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover, .sl-link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 10px rgba(212, 195, 145, 0.2);
+  border-color: var(--sl-color-accent) !important;
+}
+
+.card .title {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  color: var(--sl-color-accent-high) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Buttons / Links */
+a {
+  color: var(--sl-color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--sl-color-accent-high);
+  text-decoration: underline;
+}
+
+/* Code Blocks */
+.expressive-code {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 4px;
+}
+
+/* Custom Hero (if any) */
+.hero-tagline {
+  font-family: 'Cinzel', serif !important;
+  color: var(--sl-color-accent-high) !important;
+  font-size: 1.5rem !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
