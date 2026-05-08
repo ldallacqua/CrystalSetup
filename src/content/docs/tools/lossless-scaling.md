@@ -24,7 +24,7 @@ Lossless Scaling works at the window level: it captures the rendered FFXIV frame
 
 ## The Typical Workflow
 
-The workflow most FFXIV users adopt:
+A common workflow:
 
 1. **Cap the in-game frame rate at 60 FPS** via the SpecialK frame limiter (or RTSS). This keeps GPU temperature, fan noise, and power draw low and consistent.
 2. **Run Lossless Scaling on top** with frame gen at **×2 (target 120 Hz)**, **×3 (target 180 Hz)**, or **×4 (target 240+ Hz)** depending on your monitor.

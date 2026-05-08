@@ -24,7 +24,7 @@ FFXIV in Borderless Windowed mode uses `DXGI_SWAP_EFFECT_DISCARD`, a legacy BitB
 SpecialK overrides the swap chain at injection time, forcing FFXIV to use `DXGI_SWAP_EFFECT_FLIP_DISCARD` — the modern Flip Model.
 
 :::note[Windows 11 Alternative]
-On **Windows 11 22H2 and later**, you can enable *Optimizations for Windowed Games* under Settings → System → Display → Graphics → Change default graphics settings. This is a Microsoft system-level Flip Model override that works without SpecialK. However, SpecialK's approach works on Windows 10 and older Windows 11 builds, and provides much more control alongside VRR diagnostics and the FPS limiter.
+On **Windows 11 22H2 and later**, you can enable *Optimizations for Windowed Games* under Settings → System → Display → Graphics → Change default graphics settings. This is a Microsoft system-level Flip Model override that works without SpecialK. However, SpecialK's approach works on Windows 10 and older Windows 11 builds, and adds three things Windows Optimizations doesn't: a precise per-game frame-rate limiter, NVIDIA Reflex integration, and the live OSD that displays the swap-chain mode (Discard / Flip) and internal vs. output resolution — both of which you need to verify the rest of this guide is working.
 :::
 
 ## Installation
@@ -83,7 +83,7 @@ FFXIV has its own built-in frame rate limiter under System Configuration → Gen
 4. The cap applies immediately — you do not need to restart the game.
 
 :::tip[VRR Users — Cap Below Max Refresh]
-For VRR displays, cap the frame rate 2–3 FPS below your monitor's maximum refresh rate (e.g., 117 on a 120 Hz display, 141 on a 144 Hz display). This keeps the GPU output in the VRR operating range at all times and prevents the monitor from locking to a fixed V-Sync rate when the cap is hit. This is the standard recommendation from Blur Busters' G-Sync 101 guide.
+For VRR displays, cap the frame rate 2–3 FPS below your monitor's maximum refresh rate (e.g., 117 on a 120 Hz display, 141 on a 144 Hz display). This keeps the GPU output in the VRR operating range at all times and prevents the monitor from locking to a fixed V-Sync rate when the cap is hit. This is the standard recommendation from [Blur Busters' G-Sync 101 guide](https://blurbusters.com/gsync/gsync101-input-lag-tests-and-settings/).
 :::
 
 ## Enabling NVIDIA Reflex (Optional)

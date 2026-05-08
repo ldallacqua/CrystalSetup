@@ -21,7 +21,7 @@ This is the most common post-setup issue and almost always has a single cause: D
 
 This forces the game to tear down and fully re-initialize the DLSS pipeline, giving DLSSTweaks a clean opportunity to apply its hooks and custom resolution values. The image should look correct immediately after switching back.
 
-This workaround is documented in the DLSSTweaks issue tracker specifically for FFXIV Dawntrail. Whenever the image looks off after launch or a game update, always try the FSR toggle before reinstalling or reconfiguring anything.
+This workaround is documented in the DLSSTweaks issue tracker specifically for FFXIV Dawntrail — see [emoose/DLSSTweaks#156 — *FFXIV Dawntrail broken quality levels*](https://github.com/emoose/DLSSTweaks/issues/156), which records the same FSR → DLSS toggle and the `ResolutionOffset=-1` fix used in this guide. Whenever the image looks off after launch or a game update, always try the FSR toggle before reinstalling or reconfiguring anything.
 
 ## DLSS Hooks Not Applying After a Game Update
 

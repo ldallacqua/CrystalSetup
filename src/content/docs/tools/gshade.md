@@ -14,7 +14,12 @@ This setup uses **GShade** as the preferred option due to its easier installatio
 GShade was originally a fork of ReShade customised specifically for FFXIV, with a built-in preset library and a simpler installer tailored to the game's directory structure. For a long time it was the de facto standard in the FFXIV community.
 
 :::caution[Security History]
-In early 2023, the GShade developer pushed an automatic update that contained code capable of forcibly rebooting or shutting down a user's computer under certain conditions. Whether this was intentional malware or a poorly thought-out anti-tampering mechanism was disputed, but the damage to trust was immediate and severe. A large portion of the community abandoned GShade and migrated to vanilla ReShade as a result.
+In early 2023, the GShade developer pushed an automatic update that contained code capable of forcibly rebooting or shutting down a user's computer under certain conditions. The developer admitted the code was deliberate, framed as an anti-tampering measure against a competing fork. The damage to trust was immediate and severe — GitHub later took the project down for ToS violations, and a large portion of the community migrated to vanilla ReShade.
+
+Coverage:
+- [PC Gamer — *Final Fantasy 14 dispute ends in the death of its most popular mod*](https://www.pcgamer.com/final-fantasy-14-dispute-ends-in-the-death-of-its-most-popular-mod/)
+- [PCGamesN — *Final Fantasy XIV mod GShade contains malware, developer admits*](https://www.pcgamesn.com/final-fantasy-xiv/gshade-malware)
+- [The Gamer — *Popular Final Fantasy 14 Mod Adds Malware To "Teach A Lesson"*](https://www.thegamer.com/final-fantasy-14-mod-malware-teach-a-lesson/)
 :::
 
 The situation since: GShade has continued to receive updates and many players still use it. The controversial code was removed. Using it is a personal decision — the setup is undeniably easier, particularly for FFXIV-specific presets. If you are not comfortable with the history, ReShade is a direct replacement and this page covers both.
