@@ -21,7 +21,10 @@
       "Bash(mkdir -p /tmp/design-fetch)",
       "Bash(tar -xzf /c/Users/Kai/.claude/projects/c--Users-Kai-Documents-GitHub-CrystalSetup/4c19c693-5cac-423a-8410-46a2a08d5fac/tool-results/webfetch-1778267501431-rdnvk3.bin -C /tmp/design-fetch)",
       "Read(//tmp/**)",
-      "Bash(cygpath -w /tmp/design-fetch)"
+      "Bash(cygpath -w /tmp/design-fetch)",
+      "Bash(grep -oE 'getRootMargin[^}]{0,400}' dist/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js)",
+      "Bash(grep -oE 'getRootMargin[^}]{0,600}' dist/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const f=fs.readFileSync\\('dist/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js','utf-8'\\); const i=f.indexOf\\('getRootMargin'\\); console.log\\(f.slice\\(i, i+700\\)\\);\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\Kai\\Documents\\GitHub\\CrystalSetup\\src\\content\\docs\\hardware"

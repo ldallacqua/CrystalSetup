@@ -19,11 +19,11 @@ sidebar:
    - `dxgi.dll` — the wrapper DLL
    - `DLSSTweaks.ini` — the configuration file
 
-### Step 2 — Rename the DLL (Required if SpecialK is also installed)
+### Step 2 — Rename the DLL (only if running SpecialK as a local injection)
 
-Both SpecialK and DLSSTweaks default to the filename `dxgi.dll`. Since SpecialK must be `dxgi.dll` to hook early enough for the Flip Model override to work, **DLSSTweaks must be renamed**.
+If you followed this guide's recommended SpecialK setup — **global injection via the SpecialK Service** (see [SpecialK](/CrystalSetup/tools/special-k/)) — then **no rename is needed**. SpecialK never lives inside the game folder, so there is no filename collision. Leave `dxgi.dll` exactly as it shipped from Nexus.
 
-Rename `dxgi.dll` (the DLSSTweaks file) to one of the following supported names:
+Only rename if you chose to run SpecialK as a local injection (a `dxgi.dll` placed inside the `game\` folder). In that case, both files would default to `dxgi.dll` and conflict, so DLSSTweaks must be renamed to one of:
 
 - `winmm.dll` ← recommended
 - `XInput1_3.dll`
@@ -31,10 +31,8 @@ Rename `dxgi.dll` (the DLSSTweaks file) to one of the following supported names:
 - `XInput9_1_0.dll`
 
 :::tip
-`winmm.dll` is the safest rename choice for FFXIV as it has the least chance of conflicting with other software. Use this unless you have a specific reason not to.
+`winmm.dll` is the safest rename choice for FFXIV as it has the least chance of conflicting with other software. Use this if you must rename.
 :::
-
-If you are **not** using SpecialK, no rename is needed — leave it as `dxgi.dll`.
 
 ### Step 3 — Place Files in the Game Directory
 
@@ -47,11 +45,12 @@ After this step, the `game\` folder should contain (at minimum):
 
 ```
 ffxiv_dx11.exe
-dxgi.dll          ← SpecialK
-winmm.dll         ← DLSSTweaks (renamed)
+dxgi.dll          ← DLSSTweaks
 DLSSTweaks.ini    ← DLSSTweaks config
 nvngx_dlss.dll    ← updated by DLSS Swapper
 ```
+
+SpecialK does **not** live in this folder — it injects globally via the SpecialK Service, leaving the `game\` directory clean.
 
 ### Step 4 — Edit the Configuration File
 

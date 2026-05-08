@@ -66,11 +66,11 @@ See [DLSS Swapper](/CrystalSetup/tools/dlss-swapper/) for full instructions.
 
 Place the DLSSTweaks DLL and `DLSSTweaks.ini` into the `game\` directory. Configure the INI with the correct values before the first launch — the settings are read at DLSS initialization time, not at startup.
 
-If SpecialK is also being installed (Step 4), you will need to rename the DLSSTweaks DLL to avoid a conflict. See the [DLSSTweaks page](/CrystalSetup/tools/dlss-tweaks/) for the exact rename instructions.
+DLSSTweaks ships as `dxgi.dll` and can stay that way: SpecialK's global injection (Step 4) doesn't put anything in this folder, so there is no filename conflict to work around. See the [DLSSTweaks page](/CrystalSetup/tools/dlss-tweaks/) for full configuration details.
 
-## Step 4 — Install SpecialK (Local Injection)
+## Step 4 — Install SpecialK (Global Injection)
 
-Place SpecialK's DLL into the `game\` directory as a local injection. See [SpecialK](/CrystalSetup/tools/special-k/) for full installation instructions including DLL naming and the Flip Model setup steps.
+Install SpecialK and add FFXIV to its injection list — **no DLL goes into the `game\` folder**. SpecialK runs as a service that injects on game launch, which keeps the game folder clean and avoids any filename collision with DLSSTweaks. See [SpecialK](/CrystalSetup/tools/special-k/) for the full walkthrough.
 
 :::note[SpecialK is Optional]
 SpecialK is the recommended tool for this setup but is not strictly required. If you only need an FPS cap and don't use a VRR monitor, **RivaTuner Statistics Server (RTSS)** can cap the frame rate without SpecialK. However, SpecialK also provides the Flip Model override (required for VRR in Borderless Windowed mode) and the resolution diagnostics OSD used to verify DLSSTweaks is working, so it offers meaningfully more than just a frame limiter.

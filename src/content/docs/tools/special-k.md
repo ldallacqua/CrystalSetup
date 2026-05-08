@@ -29,28 +29,34 @@ On **Windows 11 22H2 and later**, you can enable *Optimizations for Windowed Gam
 
 ## Installation
 
-SpecialK must be installed as a **local injection** (a DLL placed directly in the game folder) rather than via the global injector. The global injector can conflict with FFXIV's launcher.
+This setup uses SpecialK's **global injection** (the SpecialK Service) rather than a local DLL drop. The service watches the running process list and injects SpecialK on demand — so nothing has to be placed inside FFXIV's `game\` folder, and there is no DLL-naming conflict with DLSSTweaks. This is the recommended path for FFXIV.
 
-**Step 1 — Download SpecialK.**
-Go to <https://github.com/SpecialKO/SpecialK/releases> and download the latest release. The release contains a single file: `SpecialK64.dll`.
-
-**Step 2 — Rename and place the DLL.**
-Copy `SpecialK64.dll` into the FFXIV `game\` directory and rename it to `dxgi.dll`.
-
-The full path should be:
-
-- Steam: `steamapps\common\FINAL FANTASY XIV Online\game\dxgi.dll`
-- Standalone: `C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\dxgi.dll`
-
-:::caution[DLL Conflict with DLSSTweaks]
-Both SpecialK and DLSSTweaks default to using `dxgi.dll`. If both are installed, **rename the DLSSTweaks DLL instead** — SpecialK must remain as `dxgi.dll` to inject early enough to override the swap chain. DLSSTweaks supports being loaded as `winmm.dll` or `XInput1_3.dll`. See [DLSSTweaks](/CrystalSetup/tools/dlss-tweaks/) for the rename steps.
+:::tip[Why global injection]
+- No DLL files in the game directory — game patches can't overwrite or break SpecialK.
+- No filename collision with DLSSTweaks (both default to `dxgi.dll`); DLSSTweaks can stay on `dxgi.dll` exactly as shipped.
+- One install covers any other game you want SpecialK on later.
 :::
 
-**Step 3 — Launch the game.**
-SpecialK will auto-initialize. A small notification should appear briefly in the corner of the screen confirming it loaded. If you see nothing, verify the DLL is in the correct `game\` folder and is named exactly `dxgi.dll`.
+**Step 1 — Download and install SpecialK.**
+Go to <https://github.com/SpecialKO/SpecialK/releases> and download the latest installer (`SpecialK_*.exe`). Run it and follow the prompts. Default options are fine.
+
+**Step 2 — Add FFXIV to the SpecialK injection list.**
+
+1. Launch the **SpecialK** application from the Start menu.
+2. From the SpecialK launcher window, find or add **FFXIV** to the list of managed games. If not auto-detected, click **Add Game** and point it at `ffxiv_dx11.exe`:
+   - Steam: `steamapps\common\FINAL FANTASY XIV Online\game\ffxiv_dx11.exe`
+   - Standalone: `C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\ffxiv_dx11.exe`
+3. Right-click FFXIV in the list → **Inject SpecialK** (or use the toggle/play button next to the entry). This activates the SpecialK Service for FFXIV.
+
+**Step 3 — Launch the game normally.**
+Launch FFXIV through your usual launcher (XIVLauncher recommended). SpecialK will inject automatically and display a brief notification in the corner of the screen confirming it loaded. If nothing shows up, return to the SpecialK launcher and verify the FFXIV entry has its injection toggle active.
 
 :::caution[Keep Focus During Launch]
-Do not click away from the FFXIV window during launch while SpecialK is active. A known bug can cause mouse input to stop working if the window loses focus before SpecialK finishes initializing. If this happens, restart the game and keep the window focused until the title screen appears.
+Do not click away from the FFXIV window during launch while SpecialK is initializing. A known bug can cause mouse input to stop working if the window loses focus before SpecialK finishes hooking. If this happens, restart the game and keep the window focused until the title screen appears.
+:::
+
+:::note[Local injection alternative]
+If you prefer the older approach, you can drop `SpecialK64.dll` directly into FFXIV's `game\` folder and rename it `dxgi.dll`. In that case, **DLSSTweaks must be renamed** (e.g., to `winmm.dll`) to avoid the filename collision — see the [DLSSTweaks page](/CrystalSetup/tools/dlss-tweaks/). Global injection avoids this entirely.
 :::
 
 ## Enabling Flip Model Presentation
