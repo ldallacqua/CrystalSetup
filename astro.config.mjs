@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://Kai.github.io',
+	site: 'https://ldallacqua.github.io',
 	base: '/CrystalSetup',
 	integrations: [
 		starlight({
